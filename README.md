@@ -1,67 +1,67 @@
 # Saudi-Dialect-ALLaM: LoRA Fine-Tuning for Dialectal Arabic Generation
-**Saudi-Dialect-ALLaM** introduces a LoRA fine-tuned version of **ALLaM-7B-Instruct**, specialized for generating text in Saudi dialects (Hijazi & Najdi).
-It is the first openly released Saudi dialect generation model, trained on a **balanced 5.5k instruction–response dataset** 
-and evaluated with dialect classifiers, fidelity (chrF++, BERTScore), and diversity metrics.  
+
+**Saudi-Dialect-ALLaM** is a **code-only** release showing how to LoRA-tune **ALLaM-7B-Instruct-preview** for Saudi dialect generation (Hijazi & Najdi).  
+We provide training / evaluation / inference code, configs, and analysis notebooks.
+
+> **Important:** We do **not** release any dataset, model weights, or LoRA adapters.  
+> This repository is intended for researchers to reproduce our pipeline **on their own data**.
+
 <p align="center">
-  <img src="results/figures/model_pipeline.png" alt="Model Pipeline" width="400"/>
+  <img src="results/figures/model_pipeline.png" alt="Model Pipeline" width="480"/>
 </p>
 
 ---
 
-## Overview
-Modern Arabic language models are dominated by **Modern Standard Arabic (MSA)**, with limited support for Saudi dialects such as **Najdi** and **Hijazi**.  
-This project introduces:
+## What’s in this repo
 
-- **Saudi Dialect Instruction Dataset**: a balanced, synthetic dataset of 5,466 instruction–response pairs (50% Hijazi, 50% Najdi).  
-- **Saudi-Dialect-ALLaM**: LoRA fine-tuned versions of **ALLaM-7B-Instruct**, specialized for Saudi dialect generation.  
-- **Evaluation Suite**: reproducible benchmarks using external dialect classifiers, fidelity metrics (chrF++, BERTScore), and diversity measures.
+- **Training**: LoRA fine-tuning scripts and a config to reproduce our setup.
+- **Evaluation**: internal evaluation for ALLaM variants + external evaluation suite (dialect classifier + chrF++ / BERTScore + diversity).
+- **Inference**: helpers for prompting a trained checkpoint.
+- **Notebooks**: end-to-end training / eval / inference demos and figure generation.
+- **Results**: JSON/CSV reports and figures used in the paper.
 
-Our best LoRA-tuned model with **Dialect Tokens** raises the Saudi rate from **47.9% → 84.2%** while reducing MSA leakage from **32.6% → 6.2%**.
+### Directory structure
 
----
-
-## Dataset
-- **Total Size:** 5,466 instruction–response pairs  
-- **Dialects:** 2,733 Hijazi, 2,733 Najdi  
-- **Domains (18):** food, education, careers, shopping, health, technology, culture, entertainment, etc.  
-- **Format:** JSONL (`{"instruction": "...", "response": "...", "dialect": "Hijazi/Najdi"}`)  
-
-<img src="results/figures/fig4_wordcloud_overall_ar-1.png" width="500"/>
-
-- Word cloud shows salient Najdi/Hijazi vocabulary (e.g., **كيف**, **اللي**, **عشان**).
-
----
-
-## Model Usage
-You can load the fine-tuned Saudi-Dialect-ALLaM model directly from Hugging Face:
-- **Fine-Tuned Model (Hugging Face):**  
-  [HassanB4/Saudi-Dialect-ALLaM](https://huggingface.co/HassanB4/Saudi-Dialect-ALLaM)
-```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from peft import PeftModel
-
-base_model = "ALLaM-AI/ALLaM-7B-Instruct-preview"
-adapter_repo = "HassanB4/Saudi-Dialect-ALLaM-LoRA-Token-Dialect"  # this repo
-
-# Load tokenizer from base (unchanged)
-tokenizer = AutoTokenizer.from_pretrained(base_model)
-
-# Load base model
-model = AutoModelForCausalLM.from_pretrained(
-    base_model,
-    device_map="auto",
-    torch_dtype="auto"
-)
-
-# Apply LoRA adapter
-model = PeftModel.from_pretrained(model, adapter_repo)
-
-# Example (Token variant): prepend explicit dialect tag
-prompt = "<HIJAZI> اكتبلي رسالة تهنئة لواحد توه متزوج"
-inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-outputs = model.generate(**inputs, max_new_tokens=128, temperature=0.7, top_p=0.95)
-print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+```text
+.
+├─ data/                # small utilities (splits, checks, I/O)
+├─ training/            # training loop, LoRA config, CLI
+├─ evaluation/
+│  ├─ allam_eval/       # eval for ALLaM variants
+│  └─ external_eval/    # eval for external baselines + classifier/fidelity/diversity
+├─ inference/           # generation helpers and CLI
+├─ notebooks/           # Training / Inference / Eval notebooks
+└─ results/             # reports + figures used in the paper
 ```
+---
+## Prepare your data (schema)
+
+Use your own dataset in **JSON Lines** (`.jsonl`) with the following fields:
+
+```jsonl
+{"instruction": "...", "response": "...", "dialect": "HIJAZI"}
+{"instruction": "...", "response": "...", "dialect": "NAJDI"}
+```
+## Formatting regimes
+
+### Dialect-Token
+Prepend `<HIJAZI>` or `<NAJDI>` to the instruction at training time.
+
+**Example JSONL:**
+```jsonl
+{"instruction": "<HIJAZI> ...", "response": "...", "dialect": "HIJAZI"}
+{"instruction": "<NAJDI> ...", "response": "...", "dialect": "NAJDI"}
+```
+### No-Token
+
+Omit explicit tags.
+
+**Example JSONL:**
+```jsonl
+{"instruction": "...", "response": "...", "dialect": "HIJAZI"}
+{"instruction": "...", "response": "...", "dialect": "NAJDI"}
+```
+> **Tip:** See `data/` utilities and `notebooks/Training-ALLaM-15E.ipynb` for examples of packing, splits **80/10/10**, and max sequence length **2048**.
 
 ---
 ## Results
