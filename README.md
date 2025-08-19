@@ -85,3 +85,16 @@ Omit explicit tags.
 ✅ **Fidelity:** Improves chrF++ and BERTScore over all baselines.  
 ✅ **Leakage reduction:** MSA output reduced to ~6%.  
 
+### Human Evaluation
+
+*Percent of annotator votes; higher is better.*
+
+| Model                 | Dialect % ↑ | Fluency % ↑ | Task % ↑ |
+|-----------------------|------------:|------------:|---------:|
+| LoRA Dialect-Token    | 68.83       | 74.83       | 91.50    |
+| LoRA No-Token         | 66.92       | 72.67       | 88.50    |
+| AceGPT-v2-8B-Chat     | 28.67       | 31.50       | 90.17    |
+| Llama-3.1-8B-Instruct | 28.17       | 31.25       | 72.92    |
+
+> **Notes:** Dialect-token leads on Dialect and Fluency; AceGPT is relatively strong on Task but weak on Dialect/Fluency.
+
