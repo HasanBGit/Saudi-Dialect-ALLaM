@@ -1,0 +1,14 @@
+{
+  "model": "AceGPT-v2-8B-Chat",
+  "n": 836,
+  "saudi_rate_pct": 67.94258373205741,
+  "msa_leak_pct": 22.01845645904541,
+  "low_conf_pct": 6.937799043062201,
+  "tag_echo_pct": 83.97129186602871,
+  "chrF++": 21.587222916764638,
+  "BERTScore_F1": 0.6687937378883362,
+  "distinct2": 0.7902312558332469,
+  "distinct3": 0.9409256875118719,
+  "selfBLEU": 0.3118020745083612,
+  "near_duplicate_pct": 0.0
+}

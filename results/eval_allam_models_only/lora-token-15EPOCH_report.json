@@ -1,0 +1,14 @@
+{
+  "model": "lora-token-15EPOCH",
+  "n": 836,
+  "saudi_rate_pct": 84.21052631578947,
+  "msa_leak_pct": 6.207384169101715,
+  "low_conf_pct": 4.904306220095694,
+  "tag_echo_pct": 0.0,
+  "chrF++": 24.798211409096567,
+  "BERTScore_F1": 0.7386345863342285,
+  "distinct2": 0.8875411184210527,
+  "distinct3": 0.9838354545942752,
+  "selfBLEU": 0.6594458617048031,
+  "near_duplicate_pct": 0.0
+}

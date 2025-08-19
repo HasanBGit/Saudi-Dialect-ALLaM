@@ -1,0 +1,2 @@
+Model,Saudi% (GLF) ↑,MSA leak% ↓,Low-conf% ↓,Tag-echo% ↓,chrF++ ↑,BERTScore F1 ↑,distinct-2 ↑,distinct-3 ↑,Self-BLEU ↓,Near-dup% ↓
+Llama-3.1-8B-Instruct,65.55,11.1,9.69,100.0,17.41,0.629,0.6605,0.7957,5.11,0.0

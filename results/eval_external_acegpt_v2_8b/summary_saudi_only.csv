@@ -1,0 +1,2 @@
+Model,Saudi% (GLF) ↑,MSA leak% ↓,Low-conf% ↓,Tag-echo% ↓,chrF++ ↑,BERTScore F1 ↑,distinct-2 ↑,distinct-3 ↑,Self-BLEU ↓,Near-dup% ↓
+AceGPT-v2-8B-Chat,67.94,22.02,6.94,83.97,21.59,0.6688,0.7902,0.9409,0.31,0.0

@@ -1,0 +1,2 @@
+Model,Saudi% (GLF) ↑,MSA leak% ↓,Low-conf% ↓,Tag-echo% ↓,chrF++ ↑,BERTScore F1 ↑,distinct-2 ↑,distinct-3 ↑,Self-BLEU ↓,Near-dup% ↓
+Falcon3-7B-Instruct,55.62,18.8,13.52,100.0,17.81,0.6321,0.7745,0.9073,21.85,0.0

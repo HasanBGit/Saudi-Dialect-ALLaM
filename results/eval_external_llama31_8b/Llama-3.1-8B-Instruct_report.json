@@ -1,0 +1,14 @@
+{
+  "model": "Llama-3.1-8B-Instruct",
+  "n": 836,
+  "saudi_rate_pct": 65.55023923444976,
+  "msa_leak_pct": 11.10399141907692,
+  "low_conf_pct": 9.688995215311005,
+  "tag_echo_pct": 100.0,
+  "chrF++": 17.412299838819436,
+  "BERTScore_F1": 0.6289556622505188,
+  "distinct2": 0.6604541141913934,
+  "distinct3": 0.7956770251626043,
+  "selfBLEU": 5.10581084917248,
+  "near_duplicate_pct": 0.0
+}

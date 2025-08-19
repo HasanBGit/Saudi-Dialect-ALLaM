@@ -1,0 +1,14 @@
+{
+  "model": "Qwen2.5-7B-Instruct",
+  "n": 836,
+  "saudi_rate_pct": 50.119617224880386,
+  "msa_leak_pct": 7.724223285913467,
+  "low_conf_pct": 13.516746411483254,
+  "tag_echo_pct": 100.0,
+  "chrF++": 19.14701126947742,
+  "BERTScore_F1": 0.6326881051063538,
+  "distinct2": 0.6606480870514558,
+  "distinct3": 0.7957027036853012,
+  "selfBLEU": 6.127334745864588,
+  "near_duplicate_pct": 0.0
+}

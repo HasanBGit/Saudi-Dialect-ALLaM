@@ -1,0 +1,41 @@
+# pick a modern Python; 3.10 or 3.11 is a sweet spot
+# python3.11 -m venv .venv
+# source .venv/bin/activate
+# python -m pip install --upgrade pip
+
+# Install PyTorch first from the official index URL, then the rest
+# CUDA 12.1:
+# pip install torch==2.7.0 --index-url https://download.pytorch.org/whl/cu121
+# OR CUDA 11.8:
+# pip install torch==2.7.0 --index-url https://download.pytorch.org/whl/cu118
+# OR CPU-only:
+# pip install torch==2.7.0 --index-url https://download.pytorch.org/whl/cpu
+
+# now the rest
+# pip install -r requirements.txt
+
+# ----- Core runtime -----
+numpy==2.3.2                 # stable with PyTorch/Transformers
+torch==2.7.0                 # current PyTorch "Stable" (use proper index-url below) :contentReference[oaicite:0]{index=0}
+safetensors==0.6.2
+tokenizers==0.21.4
+huggingface_hub==0.34.4      # Hub client (login, download, push) :contentReference[oaicite:1]{index=1}
+
+# ----- HF ecosystem -----
+transformers==4.55.2         # latest stable Transformers :contentReference[oaicite:2]{index=2}
+datasets==4.0.0              # latest stable Datasets :contentReference[oaicite:3]{index=3}
+accelerate==1.5.0            # launcher / device mgmt used by HF stack
+
+# ----- Fine-tuning (your scripts) -----
+peft==0.17.0                 # LoRA adapters (compatible with Transformers 4.55.x) :contentReference[oaicite:4]{index=4}
+trl==0.21.0                  # SFTTrainer (docs: TRL SFT) :contentReference[oaicite:5]{index=5}
+sentencepiece==0.2.1         # needed for LLaMA/Qwen tokenizers
+
+# ----- Evaluation -----
+sacrebleu==2.5.1             # chrF++ / BLEU :contentReference[oaicite:6]{index=6}
+bert-score==0.3.13           # BERTScore F1 (latest) :contentReference[oaicite:7]{index=7}
+scikit-learn==1.7.1          # TF-IDF + cosine sim (near-dup)
+tqdm==4.67.1                 # progress bars
+
+# ----- Optional: 4-bit inference (only if you need it) -----
+bitsandbytes==0.47.0       # requires matching CUDA; enable only if you use --use-4bit

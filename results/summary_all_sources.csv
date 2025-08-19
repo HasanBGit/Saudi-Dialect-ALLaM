@@ -1,0 +1,9 @@
+source,model,Model,Saudi% (GLF) ↑,MSA leak% ↓,Low-conf% ↓,Tag-echo% ↓,chrF++ ↑,BERTScore F1 ↑,distinct-2 ↑,distinct-3 ↑,Self-BLEU ↓,Near-dup% ↓
+eval_external_acegpt_v2_8b,acegpt_v2_8b,AceGPT-v2-8B-Chat,67.94,22.02,6.94,83.97,21.59,0.6688,0.7902,0.9409,0.31,0.0
+eval_saudi_only,eval_saudi_only,allam_base,47.97,32.63,7.18,3.11,21.27,0.6796,0.7616,0.9142,1.7,0.0
+eval_saudi_only,eval_saudi_only,lora-no-token-15EPOCH,80.5,9.26,4.55,0.0,23.7,0.7377,0.9038,0.9881,0.6,0.0
+eval_saudi_only,eval_saudi_only,lora-token-15EPOCH,84.21,6.21,4.9,0.0,24.8,0.7386,0.8875,0.9838,0.66,0.0
+eval_external_falcon3_7b,falcon3_7b,Falcon3-7B-Instruct,55.62,18.8,13.52,100.0,17.81,0.6321,0.7745,0.9073,21.85,0.0
+eval_external_jais_13b,jais_13b,jais-13b-chat,28.83,44.27,10.41,0.96,15.95,0.6581,0.6933,0.8087,0.35,0.0
+eval_external_llama31_8b,llama31_8b,Llama-3.1-8B-Instruct,65.55,11.1,9.69,100.0,17.41,0.629,0.6605,0.7957,5.11,0.0
+eval_external_qwen2p5_7b,qwen2p5_7b,Qwen2.5-7B-Instruct,50.12,7.72,13.52,100.0,19.15,0.6327,0.6606,0.7957,6.13,0.0

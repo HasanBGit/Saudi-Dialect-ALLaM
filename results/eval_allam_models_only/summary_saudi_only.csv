@@ -1,0 +1,4 @@
+Model,Saudi% (GLF) ↑,MSA leak% ↓,Low-conf% ↓,Tag-echo% ↓,chrF++ ↑,BERTScore F1 ↑,distinct-2 ↑,distinct-3 ↑,Self-BLEU ↓,Near-dup% ↓
+allam_base,47.97,32.63,7.18,3.11,21.27,0.6796,0.7616,0.9142,1.7,0.0
+lora-no-token-15EPOCH,80.5,9.26,4.55,0.0,23.7,0.7377,0.9038,0.9881,0.6,0.0
+lora-token-15EPOCH,84.21,6.21,4.9,0.0,24.8,0.7386,0.8875,0.9838,0.66,0.0

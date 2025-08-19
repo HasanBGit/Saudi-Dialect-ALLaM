@@ -1,0 +1,14 @@
+{
+  "model": "Falcon3-7B-Instruct",
+  "n": 836,
+  "saudi_rate_pct": 55.622009569377994,
+  "msa_leak_pct": 18.80151480436325,
+  "low_conf_pct": 13.516746411483254,
+  "tag_echo_pct": 100.0,
+  "chrF++": 17.814219717376247,
+  "BERTScore_F1": 0.6321335434913635,
+  "distinct2": 0.774519549370444,
+  "distinct3": 0.9072922555115884,
+  "selfBLEU": 21.850400485115802,
+  "near_duplicate_pct": 0.0
+}

@@ -1,0 +1,2 @@
+Model,Saudi% (GLF) ↑,MSA leak% ↓,Low-conf% ↓,Tag-echo% ↓,chrF++ ↑,BERTScore F1 ↑,distinct-2 ↑,distinct-3 ↑,Self-BLEU ↓,Near-dup% ↓
+Qwen2.5-7B-Instruct,50.12,7.72,13.52,100.0,19.15,0.6327,0.6606,0.7957,6.13,0.0

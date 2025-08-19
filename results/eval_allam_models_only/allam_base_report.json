@@ -1,0 +1,14 @@
+{
+  "model": "allam_base",
+  "n": 836,
+  "saudi_rate_pct": 47.96650717703349,
+  "msa_leak_pct": 32.63390064239502,
+  "low_conf_pct": 7.177033492822966,
+  "tag_echo_pct": 3.110047846889952,
+  "chrF++": 21.274720531403986,
+  "BERTScore_F1": 0.6795966625213623,
+  "distinct2": 0.7615624949411555,
+  "distinct3": 0.914224293544258,
+  "selfBLEU": 1.695886005325528,
+  "near_duplicate_pct": 0.0
+}

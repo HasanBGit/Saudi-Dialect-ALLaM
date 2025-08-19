@@ -1,0 +1,5 @@
+model,dialect_mean,fluency_mean,task_mean
+ALLaM-LoRA-Dialect-Token,68.83,74.83,91.5
+ALLaM-LoRA-No-Token,66.92,72.67,88.5
+AceGPT-v2-8B-Chat,28.67,31.5,90.17
+Llama-3.1-8B-Instruct,28.17,31.25,72.92
