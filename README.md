@@ -101,7 +101,7 @@ Omit explicit tags.
 ---
 ```
 Citation:
-@misc{barmandah2025saudidialectallam,
+@misc{saudidialectallam,
   title         = {Saudi-Dialect-ALLaM: LoRA Fine-Tuning for Dialectal Arabic Generation},
   author        = {Barmandah, Hassan},
   year          = {2025},
