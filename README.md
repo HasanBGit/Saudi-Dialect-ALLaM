@@ -98,3 +98,15 @@ Omit explicit tags.
 
 > **Notes:** Dialect-token leads on Dialect and Fluency; AceGPT is relatively strong on Task but weak on Dialect/Fluency.
 
+---
+Citation:
+@misc{barmandah2025saudidialectallam,
+  title         = {Saudi-Dialect-ALLaM: LoRA Fine-Tuning for Dialectal Arabic Generation},
+  author        = {Barmandah, Hassan},
+  year          = {2025},
+  eprint        = {2508.13525},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2508.13525}
+}
+
