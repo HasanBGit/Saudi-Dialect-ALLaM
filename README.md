@@ -104,7 +104,7 @@ Omit explicit tags.
 ```
 @misc{saudidialectallam,
   title         = {Saudi-Dialect-ALLaM: LoRA Fine-Tuning for Dialectal Arabic Generation},
-  author        = {Barmandah, Hassan},
+  author        = {Hassan B},
   year          = {2025},
   eprint        = {2508.13525},
   archivePrefix = {arXiv},
