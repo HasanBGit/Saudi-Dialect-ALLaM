@@ -1,11 +1,11 @@
 from __future__ import annotations
-import json, re
+import json
 from pathlib import Path
 from typing import Dict, Any, Tuple
 from datasets import Dataset
 
-# Match a LEADING dialect control tag
-TAG_RE = re.compile(r'^\s*<\s*DIALECT\s*=\s*(HIJAZI|NAJDI)\s*>\s*', re.IGNORECASE)
+from data.common import TAG_RE
+
 EOS = "</s>"
 
 def load_jsonl(path: Path) -> Dataset:

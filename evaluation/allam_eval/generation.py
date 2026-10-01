@@ -1,5 +1,5 @@
 from __future__ import annotations
-import re, json
+import json
 from pathlib import Path
 from typing import List, Tuple
 from tqdm.auto import tqdm
@@ -8,9 +8,9 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
 
+from data.common import TAG_RE
+from .adapter_contract import load_required_adapter
 from .config import BASE_MODEL_ID, BATCH_SIZE_GEN
-
-TAG_RE = re.compile(r'^\s*<\s*DIALECT\s*=\s*(HIJAZI|NAJDI)\s*>\s*', re.IGNORECASE)
 
 def build_prompt(instr: str) -> str:
     return f"### Instruction:\n{instr}\n\n### Response:\n"
@@ -33,10 +33,7 @@ def generate_for_model(rows_to_use: List[dict], name: str, adapter_dir: str | No
     )
     model = base
     if adapter_dir:
-        try:
-            model = PeftModel.from_pretrained(base, adapter_dir)
-        except Exception as e:
-            print(f"WARNING: failed to load adapter {adapter_dir}; using base. {e}")
+        model = load_required_adapter(PeftModel.from_pretrained, base, adapter_dir, name)
 
     model.eval()
     preds = []

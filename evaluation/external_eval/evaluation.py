@@ -13,6 +13,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
+from data.common import DIALECT_TAG_RE
+
 # MARBERTv2 5-way written dialect classifier
 DID_ID = "IbrahimAmin/marbertv2-arabic-written-dialect-classifier"
 
@@ -60,8 +62,7 @@ def is_saudi(lbl: str) -> bool:
     return "GLF" in lbl
 
 def tag_echo_rate(texts: List[str]) -> float:
-    patt = re.compile(r'<\s*DIALECT\s*=\s*[^>]+>', re.IGNORECASE)
-    return 100.0 * float(np.mean([bool(patt.search(t)) for t in texts]))
+    return 100.0 * float(np.mean([bool(DIALECT_TAG_RE.search(t)) for t in texts]))
 
 def diversity_metrics(preds: List[str]):
     def ngrams(tokens, n): return list(zip(*[tokens[i:] for i in range(n)]))

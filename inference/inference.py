@@ -10,12 +10,13 @@ Usage (defaults provided):
 
 """
 
-import re
 import gc
 import argparse
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
+
+from data.common import TAG_RE
 
 BASE_MODEL      = "ALLaM-AI/ALLaM-7B-Instruct-preview"
 ADAPTER_TOKEN   = "outputs/allam7b-lora-token-15EPOCH/checkpoint-97"
@@ -33,8 +34,6 @@ GEN_KW_DEFAULT = dict(
 )
 
 # -------------------- Tag helpers --------------------
-TAG_RE = re.compile(r'^\s*<\s*DIALECT\s*=\s*(HIJAZI|NAJDI)\s*>\s*', re.IGNORECASE)
-
 def add_tag(instruction, dialect=None):
     """Prepend <DIALECT=...> tag if dialect is known and no tag already exists."""
     if not dialect:
@@ -51,7 +50,7 @@ def add_tag(instruction, dialect=None):
     return f"{tag}{(instruction or '').lstrip()}"
 
 def strip_tag(instruction):
-    """Remove a leading <DIALECT=...> tag if present."""
+    """Remove a supported leading dialect tag if present."""
     return TAG_RE.sub("", instruction or "").lstrip()
 
 # -------------------- Model/Tokenizer loaders --------------------

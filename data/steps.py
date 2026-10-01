@@ -80,6 +80,13 @@ def step_balance(in_path: Path, out_path: Path, mode: str = "downsample", seed: 
     kept_before = len(groups["Hijazi"]) + len(groups["Najdi"])
     dropped_unknown = len(rows) - kept_before
 
+    missing = [name for name in ("Hijazi", "Najdi") if not groups[name]]
+    if missing:
+        raise ValueError(
+            "Cannot balance to 50/50: missing dialect rows for "
+            + ", ".join(missing)
+        )
+
     random.seed(seed)
     for k in ("Hijazi","Najdi"):
         random.shuffle(groups[k])
